@@ -1,5 +1,5 @@
 import useSWRImmutable from "swr/immutable";
-const key = "df77582fbdbf3b7c31080f0f954234e8";
+const key = process.env.WEATHER;
 async function fetchApi(api: any) {
    // const apiSearch = api[0] || {};
    console.log();
