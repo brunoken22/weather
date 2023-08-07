@@ -13,11 +13,22 @@ export function Header() {
                <Enlaces href='#'>Sobre nosotros</Enlaces>
             </DivEnlces>
             <DivHamburg>
-               <MiniDiv />
-               <MiniDiv />
-               <MiniDiv />
+               <MiniDiv $rotate='rotate(62deg)' $origin='center' />
+               <MiniDiv $display='none' />
+               <MiniDiv
+                  $rotate='rotate(313deg)'
+                  $origin='center'
+                  position='absolute'
+               />
             </DivHamburg>
          </DivNav>
       </Nav>
    );
 }
+
+// transform: rotate(62deg);
+// transform-origin: center;
+
+// transform: rotate(313deg);
+//     transform-origin: center;
+//     position: absolute;
