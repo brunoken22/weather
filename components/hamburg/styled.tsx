@@ -15,3 +15,17 @@ export const DivHamburg = styled.div`
    flex-direction: column;
    font-size: 1.5rem;
 `;
+export const DivEnlaces = styled.div`
+   display: flex;
+   flex-direction: column;
+   justify-content: space-evenly;
+   align-items: center;
+   gap: 2rem   ;
+`
+export const DivDev = styled(DivEnlaces)`
+   flex-direction: row;
+   
+`
+export const Enlaces = styled.a`
+   text-decoration: none;
+`
