@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const Nav = styled.nav``;
 
@@ -26,32 +26,15 @@ export const Enlaces = styled.a`
    color: ${({ theme }) => theme.color};
 `;
 
-export const DivHamburg = styled.button`
+export const DivHamburg = styled.button<any>`
    display: none;
    flex-direction: column;
    gap: 5px;
    background-color: transparent;
    border: none;
    cursor: pointer;
-   &:hover {
-      div {
-         transition:
-            transform 0.3s ease,
-            display 0.3s ease;
-      }
-      div:nth-child(1) {
-         transform: rotate(135deg);
-         transform-origin: center;
-      }
-      div:nth-child(2) {
-         display: none;
-      }
-      div:nth-child(3) {
-         transform: rotate(225deg);
-         transform-origin: center;
-         position: absolute;
-      }
-   }
+   z-index: 10;
+
    @media (max-width: 550px) {
       display: flex;
    }
@@ -61,11 +44,13 @@ export const MiniDiv = styled.div<any>`
    width: 27px;
    height: 4px;
    background-color: #fff;
-
-   /* &:hover {
-      display: ${(props: any) => props.$display};
-      transform-origin: ${(props: any) => props.$origin};
-      position: ${(props: any) => props.$position};
-      transform: ${(props: any) => props.$rotate};
-   } */
+   transition: all 0.3s ease;
+   display: ${(props: any) =>
+      props.$display && props.$active ? props.$display : null};
+   transform-origin: ${(props: any) =>
+      props.$origin && props.$active ? props.$origin : null};
+   position: ${(props: any) =>
+      props.$position && props.$active ? props.$position : null};
+   transform: ${(props: any) =>
+      props.$rotate && props.$active ? props.$rotate : null};
 `;

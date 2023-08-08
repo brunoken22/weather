@@ -4,10 +4,10 @@ export const Contenedor = styled.div`
    flex-direction: column;
    justify-content: space-evenly;
    align-items: center;
-   z-index: 10;
    padding: 3rem 1rem;
    gap: 1.5rem;
    flex-wrap: wrap;
+   z-index: 2;
    @media (max-width: 550px) {
       padding: 2rem 0.5rem;
    }

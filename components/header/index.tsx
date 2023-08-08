@@ -1,9 +1,19 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { Nav, DivNav, DivEnlces, Enlaces, DivHamburg, MiniDiv } from "./styled";
+import { Hamburg } from "../hamburg";
 import SunSVG from "@/public/sun.svg";
 export function Header() {
+   const [active, setActive] = useState(false);
+   const handleClick = (e: any) => {
+      e.preventDefault();
+      if (active) {
+         setActive(false);
+         return;
+      }
+      setActive(true);
+   };
    return (
       <Nav>
          <DivNav>
@@ -12,23 +22,22 @@ export function Header() {
                <Enlaces href='#'>Mapa</Enlaces>
                <Enlaces href='#'>Sobre nosotros</Enlaces>
             </DivEnlces>
-            <DivHamburg>
-               <MiniDiv $rotate='rotate(62deg)' $origin='center' />
-               <MiniDiv $display='none' />
+            <DivHamburg onClick={handleClick}>
                <MiniDiv
-                  $rotate='rotate(313deg)'
+                  $rotate='rotate(316deg)'
                   $origin='center'
-                  position='absolute'
+                  $active={active}
+               />
+               <MiniDiv $display='none' $active={active} />
+               <MiniDiv
+                  $rotate='rotate(225deg)'
+                  $origin='center'
+                  $position='absolute'
+                  $active={active}
                />
             </DivHamburg>
+            {active ? <Hamburg /> : null}
          </DivNav>
       </Nav>
    );
 }
-
-// transform: rotate(62deg);
-// transform-origin: center;
-
-// transform: rotate(313deg);
-//     transform-origin: center;
-//     position: absolute;
