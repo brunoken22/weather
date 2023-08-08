@@ -2,11 +2,10 @@
 const withSvgr = require("next-svgr");
 
 const nextConfig = withSvgr({
-   reactStrictMode: true,
-
+   
    compiler: {
-      styledComponents: true,
-   },
+      styledComponents: true
+    },
    async headers() {
       return [
          {
