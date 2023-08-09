@@ -55,4 +55,7 @@ export const DivInfo = styled.div`
   color: #fff;
   margin: 4rem;
   backdrop-filter: blur(20px);
+  @media (max-width: 550px) {
+    margin: 1rem;
+  }
 `;
