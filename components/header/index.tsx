@@ -62,7 +62,7 @@ export function Header() {
             <DivEnlaces>
               <Link
                 href={'/'}
-                onClick={(e: any) => {
+                onClick={() => {
                   setActive(false);
                 }}
                 style={{textDecoration: 'none', color: '#fff'}}>
@@ -70,7 +70,7 @@ export function Header() {
               </Link>
               <Link
                 href={'/mapa'}
-                onClick={(e: any) => {
+                onClick={() => {
                   setActive(false);
                 }}
                 style={{textDecoration: 'none', color: '#fff'}}>
@@ -78,7 +78,7 @@ export function Header() {
               </Link>
               <Link
                 href={'/info'}
-                onClick={(e: any) => {
+                onClick={() => {
                   setActive(false);
                 }}
                 style={{textDecoration: 'none', color: '#fff'}}>
