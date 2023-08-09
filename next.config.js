@@ -23,6 +23,7 @@ const nextConfig = withSvgr({
          },
       ];
    },
+
 });
 
 module.exports = nextConfig;
