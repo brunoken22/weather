@@ -78,7 +78,7 @@ export const Sidebar = styled.div`
   font-family: monospace;
   z-index: 1;
   position: absolute;
-  top: 15%;
+  top: 17%;
   left: 0;
   margin: 12px;
   border-radius: 4px;
