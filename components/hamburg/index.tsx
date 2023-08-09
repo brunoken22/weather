@@ -1,19 +1,28 @@
-import { DivHamburg,DivDev ,DivEnlaces} from "./styled";
-import { SubTitle } from "@/ui/typography";
-import Linkedin from "@/ui/icons/linkedin.svg"
-import Github from '@/ui/icons/github.svg'
+import {DivHamburg, DivDev, DivEnlaces, Enlaces, GlobalStyles} from './styled';
+import {SubTitle} from '@/ui/typography';
+import Linkedin from '@/ui/icons/linkedin.svg';
+import Github from '@/ui/icons/github.svg';
 
 export function Hamburg() {
-   return (
-      <DivHamburg>
-         <DivEnlaces>
-            <a href=""><SubTitle>Mapa</SubTitle></a>
-            <a href=""><SubTitle>Sobre nosotros</SubTitle></a>
-         </DivEnlaces>
-         <DivDev>
-            <Linkedin/>   
-            <Github/>
-         </DivDev>   
-      </DivHamburg>
-   );
+  return (
+    <DivHamburg>
+      <GlobalStyles></GlobalStyles>
+      <DivEnlaces>
+        <Enlaces href=''>
+          <SubTitle>Mapa</SubTitle>
+        </Enlaces>
+        <Enlaces href=''>
+          <SubTitle>Sobre nosotros</SubTitle>
+        </Enlaces>
+      </DivEnlaces>
+      <DivDev>
+        <Enlaces href=''>
+          <Linkedin />
+        </Enlaces>
+        <Enlaces href=''>
+          <Github />
+        </Enlaces>
+      </DivDev>
+    </DivHamburg>
+  );
 }
