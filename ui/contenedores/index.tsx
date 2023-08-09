@@ -63,11 +63,13 @@ export const DivInfo = styled.div`
 
 export const DivMap = styled(DivInfo)`
   height: 100%;
+  backdrop-filter: blur(1px);
 `;
 export const DivSearch = styled.div`
   margin: 2rem;
   display: flex;
   justify-content: center;
+  z-index: 9;
 `;
 export const Sidebar = styled.div`
   background-color: rgba(35, 55, 75, 0.9);

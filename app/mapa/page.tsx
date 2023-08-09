@@ -28,20 +28,12 @@ export default function Mapa() {
       mapboxgl: mapboxgl,
     });
 
-    // Agregar el geocoder al contenedor
     geocoderContainer.current.appendChild(geocoder.onAdd(map.current));
-
-    // map.current.addControl(
-    //   new MapboxGeocoder({
-    //     accessToken: mapboxgl.accessToken,
-    //     mapboxgl: mapboxgl,
-    //   })
-    // );
 
     map.current.on('move', () => {
       setLng(map.current.getCenter().lng.toFixed(4));
       setLat(map.current.getCenter().lat.toFixed(4));
-      setZoom(map.current.getZoom().toFixed(2));
+      setZoom(map.current.getZoom().toFixed(9));
     });
   }, [lng, lat, zoom]);
 
