@@ -4,7 +4,7 @@ export default function Info() {
   return (
     <DivInfo>
       <p>
-        "Soy un apasionado desarrollador de software y he creado esta aplicación
+        Soy un apasionado desarrollador de software y he creado esta aplicación
         de clima como parte de mi portafolio personal. Mi objetivo al
         desarrollar esta aplicación era combinar mi amor por la tecnología con
         mi interés en proporcionar información precisa sobre las condiciones
@@ -25,7 +25,7 @@ export default function Info() {
         cumpla con sus expectativas y les ayude a estar preparados en cualquier
         clima que se presente.{<br></br>}
         {<br></br>}
-        {<br></br>} ¡Gracias por su interés y confianza en mi trabajo!"
+        {<br></br>} ¡Gracias por su interés y confianza en mi trabajo!
       </p>
     </DivInfo>
   );
