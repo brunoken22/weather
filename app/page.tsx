@@ -2,7 +2,6 @@
 import { Contenedor, DivDias } from "@/ui/contenedores";
 import { TemplateClima, TemplateClimaDias } from "@/components/templateClima";
 // import { DataClima } from "@/lib/hook";
-import { Sun } from "@/components/sun";
 
 export default function Home() {
    const data = true;
@@ -11,7 +10,6 @@ export default function Home() {
 
    return (
       <Contenedor>
-         <Sun />
 
          {data ? (
             <TemplateClima tem={300.55} senTem={300.55}></TemplateClima>

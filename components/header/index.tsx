@@ -1,11 +1,25 @@
 'use client';
 
-import React, {useState} from 'react';
-import {Nav, DivNav, DivEnlces, Enlaces, DivHamburg, MiniDiv} from './styled';
-import {Hamburg} from '../hamburg';
+import React, {useEffect, useState} from 'react';
+import {
+  Nav,
+  DivNav,
+  DivEnlces,
+  DivHamburg,
+  MiniDiv,
+  DivHamburgOcu,
+  DivDev,
+  DivEnlaces,
+  Enlaces,
+  GlobalStyles,
+} from './styled';
 import SunSVG from '@/public/sun.svg';
+import Link from 'next/link';
+import Linkedin from '@/ui/icons/linkedin.svg';
+import Github from '@/ui/icons/github.svg';
 export function Header() {
   const [active, setActive] = useState(false);
+
   const handleClick = (e: any) => {
     e.preventDefault();
     if (active) {
@@ -14,13 +28,23 @@ export function Header() {
     }
     setActive(true);
   };
+
   return (
     <Nav>
       <DivNav>
-        <SunSVG />
+        <Enlaces href='/'>
+          <SunSVG />
+        </Enlaces>
         <DivEnlces>
-          <Enlaces href='#'>Mapa</Enlaces>
-          <Enlaces href='#'>Sobre nosotros</Enlaces>
+          <Link href={'/'} style={{textDecoration: 'none', color: '#fff'}}>
+            Inicio
+          </Link>
+          <Link href={'/mapa'} style={{textDecoration: 'none', color: '#fff'}}>
+            Mapa
+          </Link>
+          <Link href={'/info'} style={{textDecoration: 'none', color: '#fff'}}>
+            Sobre nosotros
+          </Link>
         </DivEnlces>
         <DivHamburg onClick={handleClick}>
           <MiniDiv $rotate='rotate(316deg)' $origin='center' $active={active} />
@@ -32,7 +56,47 @@ export function Header() {
             $active={active}
           />
         </DivHamburg>
-        {active ? <Hamburg /> : null}
+        {active ? (
+          <DivHamburgOcu>
+            <GlobalStyles></GlobalStyles>
+            <DivEnlaces>
+              <Link
+                href={'/'}
+                onClick={(e: any) => {
+                  setActive(false);
+                }}
+                style={{textDecoration: 'none', color: '#fff'}}>
+                Inicio
+              </Link>
+              <Link
+                href={'/mapa'}
+                onClick={(e: any) => {
+                  setActive(false);
+                }}
+                style={{textDecoration: 'none', color: '#fff'}}>
+                Mapa
+              </Link>
+              <Link
+                href={'/info'}
+                onClick={(e: any) => {
+                  setActive(false);
+                }}
+                style={{textDecoration: 'none', color: '#fff'}}>
+                Sobre nosotros
+              </Link>
+            </DivEnlaces>
+            <DivDev>
+              <Enlaces
+                href='https://www.linkedin.com/in/brunoken18/'
+                target='_blank'>
+                <Linkedin />
+              </Enlaces>
+              <Enlaces href='https://github.com/brunoken22' target='_blank'>
+                <Github />
+              </Enlaces>
+            </DivDev>
+          </DivHamburgOcu>
+        ) : null}
       </DivNav>
     </Nav>
   );
