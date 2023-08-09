@@ -50,11 +50,12 @@ export const Dias = styled(DivClima)`
 `;
 
 export const DivInfo = styled.div`
-  position: relative;
   z-index: 9;
   color: #fff;
   margin: 4rem;
   backdrop-filter: blur(20px);
+  display: flex;
+  flex-direction: column;
   @media (max-width: 550px) {
     margin: 1rem;
   }
@@ -63,7 +64,11 @@ export const DivInfo = styled.div`
 export const DivMap = styled(DivInfo)`
   height: 100%;
 `;
-
+export const DivSearch = styled.div`
+  margin: 2rem;
+  display: flex;
+  justify-content: center;
+`;
 export const Sidebar = styled.div`
   background-color: rgba(35, 55, 75, 0.9);
   color: #fff;
@@ -71,7 +76,7 @@ export const Sidebar = styled.div`
   font-family: monospace;
   z-index: 1;
   position: absolute;
-  top: 0;
+  top: 15%;
   left: 0;
   margin: 12px;
   border-radius: 4px;
