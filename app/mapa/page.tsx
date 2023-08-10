@@ -1,9 +1,10 @@
 'use client';
-import mapboxgl from 'mapbox-gl';
+import mapboxgl, {Popup} from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import {useEffect, useRef, useState} from 'react';
 import {DivMap, Sidebar, DivSearch} from '@/ui/contenedores';
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
+import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
 
 mapboxgl.accessToken =
   'pk.eyJ1IjoiZGVuaXNwYXJhZGEiLCJhIjoiY2t2cmhwbjZlMDM5czJ2cWlyczZoODg4cSJ9.6obRc3i_TK7qdx_A6_y-qg';
@@ -13,7 +14,7 @@ export default function Mapa() {
   const geocoderContainer: any = useRef(null); // Ref para el contenedor del geocoder
   const [lng, setLng] = useState(-58.6645);
   const [lat, setLat] = useState(-34.6747);
-  const [zoom, setZoom] = useState(9);
+  const [zoom, setZoom] = useState(11);
 
   useEffect(() => {
     if (map.current) return; // initialize map only once
@@ -23,26 +24,46 @@ export default function Mapa() {
       center: [lng, lat],
       zoom: zoom,
     });
+
     const geocoder = new MapboxGeocoder({
       accessToken: mapboxgl.accessToken,
       mapboxgl: mapboxgl,
     });
 
+    // const initialMarker = new mapboxgl.Marker({color: '#ff0000', scale: 1.5})
+    //   .setLngLat([lng, lat])
+    //   .setPopup(new mapboxgl.Popup().setText('Ubicación Inicial'))
+    //   .addTo(map.current);
+
+    // Agregar el geocodificador al mapa
     geocoderContainer.current.appendChild(geocoder.onAdd(map.current));
+
+    // Manejar el evento 'result' del geocodificador
 
     map.current.on('move', () => {
       setLng(map.current.getCenter().lng.toFixed(4));
       setLat(map.current.getCenter().lat.toFixed(4));
-      setZoom(map.current.getZoom().toFixed(9));
+      setZoom(map.current.getZoom().toFixed(11));
     });
-  }, [lng, lat, zoom]);
+    geocoder.on('result', (event) => {
+      const resultLngLat = event.result.center;
+
+      // Eliminar el marcador inicial
+      const popUp = new Popup({closeButton: false, anchor: 'left'}).setHTML(
+        `<div class="popup" style="color:#000">You click here: <br/>[${map.current
+          .getCenter()
+          .lng.toFixed(4)},  ${map.current.getCenter().lat.toFixed(4)}]</div>`
+      );
+      // Crear un nuevo marcador en la ubicación seleccionada
+      new mapboxgl.Marker({color: '#63df29', scale: 1.5})
+        .setLngLat(resultLngLat)
+        .setPopup(popUp)
+        .addTo(map.current);
+    });
+  }, []);
 
   return (
     <DivMap>
-      <link
-        rel='stylesheet'
-        href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css'
-        type='text/css'></link>
       <DivSearch ref={geocoderContainer}></DivSearch>
       <Sidebar>
         Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
