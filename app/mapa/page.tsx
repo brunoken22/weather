@@ -52,10 +52,13 @@ export default function Mapa() {
       const popUp = new Popup({closeButton: false, anchor: 'left'}).setHTML(
         `<div class="popup" style="color:#000">You click here: <br/>[${map.current
           .getCenter()
-          .lng.toFixed(4)},  ${map.current.getCenter().lat.toFixed(4)}]</div>`
+
+          .lng.toFixed(4)},  ${map.current
+          .getCenter()
+          .lat.toFixed(4)}]<br/>Tem:${'18°'}<br/>${'soleado'}</div>`
       );
       // Crear un nuevo marcador en la ubicación seleccionada
-      new mapboxgl.Marker({color: '#63df29', scale: 1.5})
+      new mapboxgl.Marker({color: '#63df29', scale: 1})
         .setLngLat(resultLngLat)
         .setPopup(popUp)
         .addTo(map.current);
