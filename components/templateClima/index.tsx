@@ -1,4 +1,3 @@
-import CMSSVG from '@/ui/icons/cloud-moon-solid.svg';
 import {Body} from '@/ui/typography';
 import {DivClima, Dias} from '@/ui/contenedores';
 import Image from 'next/image';
@@ -26,7 +25,6 @@ export function TemplateClimaDias(props: any) {
   return (
     <Dias>
       <Body>{props.dia}</Body>
-      {/* <CMSSVG style={{width: '50px'}} /> */}
       <Image
         src={`https://openweathermap.org/img/wn/${props.img}@2x.png`}
         width={50}
