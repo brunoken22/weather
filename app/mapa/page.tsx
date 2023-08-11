@@ -6,7 +6,7 @@ import {DivMap, Sidebar, DivSearch} from '@/ui/contenedores';
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
 import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
-mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX as string;
+mapboxgl.accessToken = process.env.MAPBOX as string;
 export default function Mapa() {
   const mapContainer = useRef(null);
   const map: any = useRef(null);
@@ -41,7 +41,7 @@ export default function Mapa() {
     geocoder.on('result', (event) => {
       const resultLngLat = event.result.center;
       fetch(
-        `https://api.openweathermap.org/data/2.5/weather?lat=${resultLngLat[1]}&lon=${resultLngLat[0]}&appid=${process.env.NEXT_PUBLIC_WEATHER}`
+        `https://api.openweathermap.org/data/2.5/weather?lat=${resultLngLat[1]}&lon=${resultLngLat[0]}&appid=${process.env.WEATHER}`
       )
         .then((response) => response.json())
         .then((res) => {
