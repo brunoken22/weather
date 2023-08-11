@@ -58,7 +58,7 @@ export default function Mapa() {
           el.style.width = '100px';
           el.style.height = '100px';
           el.style.backgroundSize = '100%';
-
+          map.current.setCenter(resultLngLat);
           new mapboxgl.Marker(el)
             .setLngLat(resultLngLat)
             .setPopup(popUp)
