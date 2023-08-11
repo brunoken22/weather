@@ -46,14 +46,9 @@ export default function Mapa() {
         .then((response) => response.json())
         .then((res) => {
           const popUp = new Popup({closeButton: false, anchor: 'left'}).setHTML(
-            `<div class="popup" style="color:#000">${
-              res.name
-            } <br/>[${map.current
-              .getCenter()
-
-              .lng.toFixed(4)},  ${map.current
-              .getCenter()
-              .lat.toFixed(4)}]<br/>Tem: ${
+            `<div class="popup" style="color:#000">${res.name} <br/>[${
+              resultLngLat[0]
+            },  ${resultLngLat[1]}]<br/>Tem: ${
               Number(Math.round((res.main.temp - 273) * 10) / 10) + '°c'
             }<br/>Humedad: ${res.main.humidity}%</div>`
           );
