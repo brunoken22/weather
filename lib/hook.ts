@@ -18,7 +18,7 @@ export function DataClima(lon: any, lat: any) {
   return {data, isLoading};
 }
 
-export function NameCiudad(lng: number, lat: number) {
+export function NameCiudad(lng: any, lat: any) {
   const {data} = useSWRImmutable(
     lng & lat ? [lng, lat] : null,
     fetchApiNameCiudad
@@ -47,7 +47,7 @@ async function fetchApiNameCiudad(api: any) {
     console.log('No se encontró ningún lugar.');
   }
 }
-export function DataPorDias(lng: number, lat: number) {
+export function DataPorDias(lng: any, lat: any) {
   const api = `forecast?lat=${lat}&lon=${lng}&appid=${keyWeather}`;
   const {data} = useSWRImmutable([api, {}], fetchApi);
   if (data) {

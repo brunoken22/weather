@@ -32,9 +32,9 @@ export function Header() {
   return (
     <Nav>
       <DivNav>
-        <Enlaces href='/'>
+        <Link href={'/'}>
           <SunSVG />
-        </Enlaces>
+        </Link>
         <DivEnlces>
           <Link href={'/'} style={{textDecoration: 'none', color: '#fff'}}>
             Inicio

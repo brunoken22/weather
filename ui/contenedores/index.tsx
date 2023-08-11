@@ -1,5 +1,9 @@
-import styled from 'styled-components';
-
+import styled, {keyframes} from 'styled-components';
+const slidebg = keyframes`
+  to {
+    background-position:20vw;
+  }
+`;
 export const Contenedor = styled.div`
   display: flex;
   flex-direction: column;
@@ -48,7 +52,6 @@ export const Dias = styled(DivClima)`
     width: 100%;
   }
 `;
-
 export const DivInfo = styled.div`
   z-index: 9;
   color: #fff;
@@ -60,7 +63,6 @@ export const DivInfo = styled.div`
     margin: 1rem;
   }
 `;
-
 export const DivMap = styled(DivInfo)`
   height: 100%;
   backdrop-filter: blur(1px);
@@ -82,4 +84,41 @@ export const Sidebar = styled.div`
   left: 0;
   margin: 12px;
   border-radius: 4px;
+`;
+export const DivUbi = styled(DivInfo)`
+  gap: 3rem;
+  backdrop-filter: blur(0px);
+`;
+export const Button = styled.button`
+  background: #425df7; /* color de fondo */
+  color: #fff; /* color de fuente */
+  border: 2px solid #4741d7; /* tamaño y color de borde */
+  padding: 16px 20px;
+  border-radius: 3px; /* redondear bordes */
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  display: inline-block;
+  &:hover {
+    color: #425df7; /* color de fuente hover */
+  }
+  &::after {
+    content: '';
+    background-color: #ffffff; /* color de fondo hover */
+    color: #425df7;
+    position: absolute;
+    z-index: -1;
+    padding: 16px 20px;
+    display: block;
+    left: -20%;
+    right: -20%;
+    top: 0;
+    bottom: 0;
+    transform: skewX(-45deg) scale(0, 1);
+    transition: all 0.3s ease;
+  }
+  &:hover::after {
+    transition: all 0.3s ease-out;
+    transform: skewX(-45deg) scale(1, 1);
+  }
 `;

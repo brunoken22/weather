@@ -60,8 +60,8 @@ export default function Mapa() {
           const el = document.createElement('div');
           el.className = 'marker';
           el.style.backgroundImage = `url(https://openweathermap.org/img/wn/${res.weather[0].icon}@2x.png)`;
-          el.style.width = '80px';
-          el.style.height = '80px';
+          el.style.width = '100px';
+          el.style.height = '100px';
           el.style.backgroundSize = '100%';
 
           new mapboxgl.Marker(el)
