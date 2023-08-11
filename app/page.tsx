@@ -35,8 +35,9 @@ export default function Home() {
           <Button onClick={handleClick}>Dar Ubicacion</Button>
         </DivUbi>
       )}
-      {dataDias
-        ? dataDias.map((e: any, p: any) => {
+      {dataDias ? (
+        <DivDias>
+          {dataDias.map((e: any, p: any) => {
             const fechaComparar = new Date(e.dt_txt);
             const diaSemana = fechaComparar.getDay();
             let dia = '';
@@ -67,17 +68,17 @@ export default function Home() {
                 break;
             }
             return (
-              <DivDias key={p}>
-                <TemplateClimaDias
-                  dia={dia}
-                  maxTem={e.main.temp_max}
-                  minTem={e.main.temp_min}
-                  img={e.weather[0].icon}
-                  humidity={e.main.humidity}></TemplateClimaDias>
-              </DivDias>
+              <TemplateClimaDias
+                key={p}
+                dia={dia}
+                maxTem={e.main.temp_max}
+                minTem={e.main.temp_min}
+                img={e.weather[0].icon}
+                humidity={e.main.humidity}></TemplateClimaDias>
             );
-          })
-        : null}
+          })}
+        </DivDias>
+      ) : null}
     </Contenedor>
   );
 }
