@@ -41,7 +41,7 @@ export default function Mapa() {
     geocoder.on('result', (event) => {
       const resultLngLat = event.result.center;
       fetch(
-        `https://api.openweathermap.org/data/2.5/weather?lat=${resultLngLat[1]}&lon=${resultLngLat[0]}&appid=${process.env.WEATHER}`
+        `https://api.openweathermap.org/data/2.5/weather?lat=${resultLngLat[1]}&lon=${resultLngLat[0]}&appid=${process.env.NEXT_PUBLIC_WEATHER}`
       )
         .then((response) => response.json())
         .then((res) => {
