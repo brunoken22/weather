@@ -6,8 +6,9 @@ import {DataClima, NameCiudad, DataPorDias} from '@/lib/hook';
 export default function Home() {
   //   const data = true;
   //   const dataName = true;
-  const dataDias: any = DataPorDias(-58.40779, -34.9187403);
-  const {data} = DataClima();
+  const {data} = DataClima(-58.40779, -34.9187403);
+  //   console.log(data);
+  const {dataDias} = DataPorDias(-58.40779, -34.9187403);
   const {dataName} = NameCiudad(data?.coord.lon, data?.coord.lat);
 
   return (
@@ -21,7 +22,7 @@ export default function Home() {
       ) : null}
       <DivDias>
         {dataDias
-          ? dataDias.dataDias.map((e: any, p: any) => {
+          ? dataDias.map((e: any, p: any) => {
               const fechaComparar = new Date(e.dt_txt);
               const diaSemana = fechaComparar.getDay();
               let dia = '';

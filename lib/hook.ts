@@ -1,5 +1,7 @@
 import useSWRImmutable from 'swr/immutable';
-// const key = process.env.WEATHER;
+const keyWeather = process.env.NEXT_PUBLIC_WEATHER;
+
+const keyMapbox = process.env.NEXT_PUBLIC_MAPBOX;
 async function fetchApi(api: any) {
   // const apiSearch = api[0] || {};
   const response = await fetch(
@@ -10,11 +12,10 @@ async function fetchApi(api: any) {
   const data = await response.json();
   return data;
 }
-export function DataClima() {
-  const api = `weather?lat=${'-34.9187403'}&lon=${'-58.40779'}&appid=df77582fbdbf3b7c31080f0f954234e8`;
-  const {data} = useSWRImmutable([api, {}], fetchApi);
-  //   console.log(data);
-  return {data};
+export function DataClima(lon: any, lat: any) {
+  const api = `weather?lat=${lat}&lon=${lon}&appid=${keyWeather}`;
+  const {data, isLoading} = useSWRImmutable(lon ? [api, {}] : null, fetchApi);
+  return {data, isLoading};
 }
 
 export function NameCiudad(lng: number, lat: number) {
@@ -25,8 +26,7 @@ export function NameCiudad(lng: number, lat: number) {
   return {dataName: data};
 }
 async function fetchApiNameCiudad(api: any) {
-  const accessToken =
-    'pk.eyJ1IjoiZGVuaXNwYXJhZGEiLCJhIjoiY2t2cmhwbjZlMDM5czJ2cWlyczZoODg4cSJ9.6obRc3i_TK7qdx_A6_y-qg';
+  const accessToken = keyMapbox;
   const apiUrl = `https://api.mapbox.com/geocoding/v5/mapbox.places/${api[0]},${api[1]}.json?access_token=${accessToken}`;
 
   const respuesta = await fetch(apiUrl);
@@ -48,7 +48,7 @@ async function fetchApiNameCiudad(api: any) {
   }
 }
 export function DataPorDias(lng: number, lat: number) {
-  const api = `forecast?lat=${lat}&lon=${lng}&appid=df77582fbdbf3b7c31080f0f954234e8`;
+  const api = `forecast?lat=${lat}&lon=${lng}&appid=${keyWeather}`;
   const {data} = useSWRImmutable([api, {}], fetchApi);
   if (data) {
     let fechaActual = new Date();
@@ -63,4 +63,5 @@ export function DataPorDias(lng: number, lat: number) {
     });
     return {dataDias: newData};
   }
+  return {dataDias: null};
 }

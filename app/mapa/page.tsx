@@ -5,9 +5,8 @@ import {useEffect, useRef, useState} from 'react';
 import {DivMap, Sidebar, DivSearch} from '@/ui/contenedores';
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
-
-mapboxgl.accessToken =
-  'pk.eyJ1IjoiZGVuaXNwYXJhZGEiLCJhIjoiY2t2cmhwbjZlMDM5czJ2cWlyczZoODg4cSJ9.6obRc3i_TK7qdx_A6_y-qg';
+import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
+mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX as string;
 export default function Mapa() {
   const mapContainer = useRef(null);
   const map: any = useRef(null);
@@ -27,41 +26,49 @@ export default function Mapa() {
 
     const geocoder = new MapboxGeocoder({
       accessToken: mapboxgl.accessToken,
+      marker: false,
       mapboxgl: mapboxgl,
     });
-
-    // const initialMarker = new mapboxgl.Marker({color: '#ff0000', scale: 1.5})
-    //   .setLngLat([lng, lat])
-    //   .setPopup(new mapboxgl.Popup().setText('Ubicación Inicial'))
-    //   .addTo(map.current);
-
     // Agregar el geocodificador al mapa
-    geocoderContainer.current.appendChild(geocoder.onAdd(map.current));
-
-    // Manejar el evento 'result' del geocodificador
 
     map.current.on('move', () => {
       setLng(map.current.getCenter().lng.toFixed(4));
       setLat(map.current.getCenter().lat.toFixed(4));
       setZoom(map.current.getZoom().toFixed(11));
     });
+    geocoderContainer.current.appendChild(geocoder.onAdd(map.current));
+
     geocoder.on('result', (event) => {
       const resultLngLat = event.result.center;
+      fetch(
+        `https://api.openweathermap.org/data/2.5/weather?lat=${resultLngLat[1]}&lon=${resultLngLat[0]}&appid=${process.env.NEXT_PUBLIC_WEATHER}`
+      )
+        .then((response) => response.json())
+        .then((res) => {
+          const popUp = new Popup({closeButton: false, anchor: 'left'}).setHTML(
+            `<div class="popup" style="color:#000">${
+              res.name
+            } <br/>[${map.current
+              .getCenter()
 
-      // Eliminar el marcador inicial
-      const popUp = new Popup({closeButton: false, anchor: 'left'}).setHTML(
-        `<div class="popup" style="color:#000">You click here: <br/>[${map.current
-          .getCenter()
+              .lng.toFixed(4)},  ${map.current
+              .getCenter()
+              .lat.toFixed(4)}]<br/>Tem: ${
+              Number(Math.round((res.main.temp - 273) * 10) / 10) + '°c'
+            }<br/>Humedad: ${res.main.humidity}%</div>`
+          );
+          const el = document.createElement('div');
+          el.className = 'marker';
+          el.style.backgroundImage = `url(https://openweathermap.org/img/wn/${res.weather[0].icon}@2x.png)`;
+          el.style.width = '80px';
+          el.style.height = '80px';
+          el.style.backgroundSize = '100%';
 
-          .lng.toFixed(4)},  ${map.current
-          .getCenter()
-          .lat.toFixed(4)}]<br/>Tem:${'18°'}<br/>${'soleado'}</div>`
-      );
-      // Crear un nuevo marcador en la ubicación seleccionada
-      new mapboxgl.Marker({color: '#63df29', scale: 1})
-        .setLngLat(resultLngLat)
-        .setPopup(popUp)
-        .addTo(map.current);
+          new mapboxgl.Marker(el)
+            .setLngLat(resultLngLat)
+            .setPopup(popUp)
+            .addTo(map.current);
+        });
     });
   }, []);
 
