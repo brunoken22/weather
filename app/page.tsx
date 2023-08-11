@@ -1,5 +1,5 @@
 'use client';
-import {Contenedor, DivDias, DivInfo, Button, DivUbi} from '@/ui/contenedores';
+import {Contenedor, DivDias, Button, DivUbi} from '@/ui/contenedores';
 import {TemplateClima, TemplateClimaDias} from '@/components/templateClima';
 import {DataClima, NameCiudad, DataPorDias} from '@/lib/hook';
 import {useState} from 'react';
