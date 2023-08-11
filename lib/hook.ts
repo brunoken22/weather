@@ -1,6 +1,6 @@
 import useSWRImmutable from 'swr/immutable';
 const keyWeather = process.env.WEATHER;
-
+console.log(keyWeather);
 const keyMapbox = process.env.MAPBOX;
 async function fetchApi(api: any) {
   // const apiSearch = api[0] || {};
