@@ -6,6 +6,7 @@ import {DivMap, Sidebar, DivSearch} from '@/ui/contenedores';
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
 import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
+console.log(process.env.MAPBOX);
 mapboxgl.accessToken = process.env.MAPBOX as string;
 export default function Mapa() {
   const mapContainer = useRef(null);
