@@ -7,10 +7,21 @@ import {Title} from '@/ui/typography';
 
 export default function Home() {
   const [lngLat, setLngLat] = useState([Number, Number]);
-  const {data} = DataClima(lngLat[0], lngLat[1]);
+  const {data, isLoading} = DataClima(lngLat[0], lngLat[1]);
   const {dataDias} = DataPorDias(lngLat[0], lngLat[1]);
   const {dataName} = NameCiudad(lngLat[0], lngLat[1]);
-
+  if (isLoading) {
+    return (
+      <div className='loader'>
+        <div className='metronome'>
+          <div className='metronome__dot'></div>
+          <div className='metronome__dot'></div>
+          <div className='metronome__dot'></div>
+          <div className='metronome__dot'></div>
+        </div>
+      </div>
+    );
+  }
   const handleClick = (e: any) => {
     e.preventDefault();
     if ('geolocation' in navigator) {
@@ -84,3 +95,14 @@ export default function Home() {
 }
 // data.main.temp
 // data.main.feels_like
+
+// z-index: 10;
+// position: absolute;
+// top: 0;
+// backdrop-filter: blur(20px);
+// left: 0;
+// bottom: 0;
+// right: 0;
+// justify-content: center;
+// align-items: center;
+// display: flex;

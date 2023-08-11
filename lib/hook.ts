@@ -19,11 +19,11 @@ export function DataClima(lon: any, lat: any) {
 }
 
 export function NameCiudad(lng: any, lat: any) {
-  const {data} = useSWRImmutable(
+  const {data, isLoading} = useSWRImmutable(
     lng & lat ? [lng, lat] : null,
     fetchApiNameCiudad
   );
-  return {dataName: data};
+  return {dataName: data, isLoading};
 }
 async function fetchApiNameCiudad(api: any) {
   const accessToken = keyMapbox;
