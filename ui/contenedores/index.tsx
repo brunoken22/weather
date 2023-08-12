@@ -55,12 +55,14 @@ export const Dias = styled(DivClima)`
 export const DivInfo = styled.div`
   z-index: 9;
   color: #fff;
-  margin: 4rem;
+  margin: 4rem auto;
   backdrop-filter: blur(20px);
   display: flex;
   flex-direction: column;
+  width: 50%;
   @media (max-width: 550px) {
     margin: 1rem;
+    width: auto;
   }
 `;
 export const DivMap = styled(DivInfo)`

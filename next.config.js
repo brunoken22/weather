@@ -25,16 +25,7 @@ const nextConfig = withSvgr({
          },
       ];
    },
-   // webpack: (config, { isServer }) => {
-   //    // Desactivar advertencias solo en el servidor (isServer)
-   //    if (isServer) {
-   //      config.devServer = {
-   //        quiet: true, // Desactivar mensajes de advertencia
-   //      };
-   //    }
-  
-   //    return config;
-   //  },
+
 });
 
 module.exports = nextConfig;
