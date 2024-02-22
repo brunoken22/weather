@@ -1,34 +1,26 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Weather App
 
-## Getting Started
+Este proyecto es una aplicación web que proporciona información meteorológica para los próximos 5 días. Utiliza tecnologías modernas como React, Next.js, Mapbox, y otras bibliotecas relacionadas para ofrecer una experiencia de usuario fluida y atractiva.
 
-First, run the development server:
+## Funcionalidades
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+- **Búsqueda de ubicación**: La aplicación permite a los usuarios buscar la información meteorológica de cualquier ubicación. Se ha implementado un geocodificador utilizando la librería Mapbox GL Geocoder para facilitar la búsqueda de lugares.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Información del clima**: Proporciona datos detallados sobre el clima actual y las previsiones para los próximos 5 días. Utiliza la API de pronóstico del tiempo para obtener datos precisos y actualizados.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Interfaz interactiva**: La interfaz de usuario es intuitiva y fácil de usar. Los datos meteorológicos se presentan de manera clara y visualmente atractiva, permitiendo a los usuarios entender fácilmente la información.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Tecnologías Utilizadas
 
-## Learn More
+- **React y Next.js**: El proyecto está construido utilizando React y Next.js, lo que permite una estructura de aplicación modular y un rendimiento optimizado.
 
-To learn more about Next.js, take a look at the following resources:
+- **Mapbox GL**: Se ha integrado el mapa interactivo de Mapbox para mostrar la ubicación de la búsqueda y mejorar la experiencia del usuario.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Styled-components**: La librería Styled-components se utiliza para la gestión de estilos, permitiendo un desarrollo fácil y mantenible.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- **SWR (Stale-While-Revalidate)**: SWR es utilizado para la gestión del estado y la caché de los datos, mejorando la eficiencia y la velocidad de la aplicación.
 
-## Deploy on Vercel
+- **TypeScript**: El proyecto está desarrollado en TypeScript para mejorar la calidad del código y proporcionar una mejor experiencia de desarrollo.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+¡Esperamos que disfrutes usando esta aplicación de pronóstico del tiempo! Si tienes alguna pregunta o sugerencia, no dudes en ponerte en contacto con nosotros. ¡Gracias por tu interés!
